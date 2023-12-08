@@ -1,0 +1,94 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin-left: 15px;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.wishlist,
+.div2,
+.div3 {
+    width: 30%; /* Ajustez la largeur selon vos besoins */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist {
+    background-color: #dff0d8; /* Couleur pour Wishlist */
+}
+
+.div2 {
+    background-color: #fcf8e3; /* Couleur pour New Item */
+}
+
+.div3 {
+    background-color: #d9edf7; /* Couleur pour Cout total */
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+h1, h3, h4 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 12px;
+    width: calc(100% - 24px); /* Ajustez en fonction de la marge */
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}

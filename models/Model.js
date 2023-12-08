@@ -4,7 +4,7 @@ import bluebird from 'bluebird';
 const connection = await mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'test',
+  password: 'password',
   Promise: bluebird,
 });
 
@@ -28,7 +28,7 @@ async function query(prefix, set = {}, where = {}) {
     query += Object.keys(set).map(key => {
       values.push(set[key]);
       return ` \`${key}\` = ?`
-    }).join(' AND');
+    }).join(', ');
   }
 
   if (Object.keys(where).length) {
@@ -72,6 +72,12 @@ export default class Model {
     }
     return /** @type{string[]} */ (this.constructor.primary);
   }
+
+  /**
+   * Lists of fields to avoid because they are not MySQL columns
+   * @type {string[]}
+   */
+  static blacklist = [];
 
   /**
    * Apply changes to the record but does not commit them to the database
@@ -126,6 +132,8 @@ export default class Model {
   static async delete(where) {
     await query(`DELETE from ${this.table}`, {}, where);
   }
+
+
 
   /**
    * Load one record from the database

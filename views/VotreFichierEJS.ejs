@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="/css/style.css"/>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        
+        <div1>
+            <h1>Wishlist</h1>
+                      
+            <ul>
+                
+                <table style="width:100%" >
+                    <Tr>
+                        <th>Marque</th>
+                        <th>Prix (€)</th>
+                        <th>Taille (Pouces)</th>           
+                        <th></th>
+                        <th></th>
+                    </Tr>
+                    <% for(liste_télévisions of wishlist) { %>
+                    <tr>
+                        <td><%= liste_télévisions.Marque %></td>
+                        <td><%= liste_télévisions.Prix %></td>
+                        <td><%= liste_télévisions.Taille %></td>                        
+                        <td><a href="/delete/<%= liste_télévisions.idTelevision %>">Delete</a></td>
+                        <td><a href="/buy/<%= liste_télévisions.idTelevision %>">Achetée</a></td>
+                       
+                    </tr>
+                    
+                    <% } %>
+
+                </table>
+
+            </ul>
+            
+            <h1>Panier</h1>
+                      
+            <ul>
+                
+                <table style="width:100%" >
+                    <Tr>
+                        <th>Marque</th>
+                        <th>Prix (€)</th>
+                        <th>Taille (Pouces)</th>
+                        <th>Fonctionnel</th>
+                        <th>Cause destruction</th>
+                        
+                        <th></th>
+                        
+                    </Tr>
+                    <% for(liste_télévisions of Panier) { %>
+                    <tr>
+                        <td><%= liste_télévisions.Marque %></td>
+                        <td><%= liste_télévisions.Prix %></td>
+                        <td><%= liste_télévisions.Taille %></td>
+                        <td><%= liste_télévisions.Fonctionnel %></td>
+                        <td><%= liste_télévisions.Cause_destruction %></td>
+                       
+                        
+                        <td><a href="/delete/<%= liste_télévisions.idTelevision %>">Delete</a></td>
+                        <td><form action="/Fonctionnel/<%= liste_télévisions.idTelevision %>" method="POST">
+                            <label>Fonctionnel</label>
+                            <input name="new_fonctionnel" required />       
+                            <label>Cause</label>
+                            <input name="new_cause" />
+                            <input type="submit" />
+                        </form>
+                    </td>
+                    </tr>
+                    <% } %>
+                </table>
+            </ul>.
+        </div1>
+            <div3>
+                <h4>Cout total</h4>
+                <% let résultat = 0  %>
+                <% for(liste_télévisions of Panier) { %> 
+                <% résultat += liste_télévisions.Prix  %>
+                <% } %>
+                <p>Le cout total est de <%- résultat %>€ </p>
+            </div3>
+               
+            
+            
+        
+        <div2>
+            <h3>
+                New Item
+            </h3>
+            <form action="/add" method="POST">
+                <label>Marque</label>
+                <input name="new_marque" required/>             
+                <label>Prix</label>
+                <input name="new_prix"  required/>       
+                <label>Taille</label>
+                <input name="new_taille" required/>
+                <input type="submit" />
+              </form>
+        </div2>
+        
+          
+    </body>
+</html>
